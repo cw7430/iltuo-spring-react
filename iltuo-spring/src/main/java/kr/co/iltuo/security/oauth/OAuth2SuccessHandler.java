@@ -50,7 +50,7 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
         CookieUtil.addHttpOnlyCookie(response, "refreshToken", refreshTokenResponseDto.refreshToken(), -1);
         upsertRefreshToken(user, refreshTokenResponseDto);
 
-        response.sendRedirect("http://localhost:3000/oauth2/success?accessTokenExpiresAt="
+        response.sendRedirect("http://localhost/oauth2/success?accessTokenExpiresAt="
                 + accessTokenResponseDto.accessTokenExpiresAt() +
                 "&refreshTokenExpiresAt=" + refreshTokenResponseDto.refreshTokenExpiresAt() +
                 "&userPermission=" + userPermission +

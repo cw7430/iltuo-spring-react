@@ -3,12 +3,14 @@
 Thumbs.db
 
 # 환경변수 파일 (이미 docker-compose에서 env_file로 읽어옴)
-.env
-iltuo-react/.env/
-iltuo-spring/deploy.env/
+# .env
+# iltuo-react/.env/
+# iltuo-spring/deploy.env/
 
 # 로그
 *.log
+
+bfg-1.15.0.jar
 
 .gitignore
 

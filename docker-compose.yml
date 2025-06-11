@@ -20,8 +20,8 @@ services:
 
   iltuo-spring-app:
     build:
-      context: ./
-      dockerfile: ./iltuo-spring/Dockerfile
+      context: ./iltuo-spring 
+      dockerfile: Dockerfile
     container_name: iltuo-spring-app
     depends_on:
       - iltuo-mysql
@@ -42,7 +42,7 @@ services:
     ports:
       - "80:80"
     env_file:
-      - ./.env
+      - ./iltuo-react/.env
     depends_on:
       - iltuo-spring-app
     networks:
