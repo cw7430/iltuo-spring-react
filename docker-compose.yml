@@ -1,0 +1,55 @@
+services:
+  iltuo-mysql:
+    image: "mysql:8.0"
+    container_name: iltuo-mysql
+    restart: always
+    ports:
+      - "3307:3306"
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - iltuo-network
+
+  iltuo-spring-app:
+    build:
+      context: ./
+      dockerfile: ./iltuo-spring/Dockerfile
+    container_name: iltuo-spring-app
+    depends_on:
+      - iltuo-mysql
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./iltuo-spring/deploy.env
+    volumes:
+      - ./file/iltuo:/app/uploads
+    networks:
+      - iltuo-network
+  
+  iltuo-react-app:
+    build:
+      context: ./iltuo-react
+      dockerfile: ./Dockerfile
+    container_name: iltuo-react-app
+    ports:
+      - "80:80"
+    env_file:
+      - ./.env
+    depends_on:
+      - iltuo-spring-app
+    networks:
+      - iltuo-network
+
+volumes:
+  mysql-data:
+
+networks:
+  iltuo-network:
