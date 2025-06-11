@@ -1,0 +1,39 @@
+# OS/툴 관련
+.DS_Store
+Thumbs.db
+
+# 환경변수 파일 (이미 docker-compose에서 env_file로 읽어옴)
+.env
+iltuo-react/.env/
+iltuo-spring/deploy.env/
+
+# 로그
+*.log
+
+.gitignore
+
+# React 불필요한 항목
+iltuo-react/node_modules/
+iltuo-react/build/
+iltuo-react/.vite/
+iltuo-react/.next/
+iltuo-react/.turbo/
+
+
+
+# Spring 불필요한 항목
+iltuo-spring/build/
+iltuo-spring/.gradle/
+
+
+# IDE 설정
+.vscode/
+.idea/
+iltuo-react/.vscode/
+iltuo-spring/.vscode/
+iltuo-spring/.idea/
+
+# 기타 불필요한 루트 항목
+npm-debug.log
+yarn-debug.log
+pnpm-debug.log
